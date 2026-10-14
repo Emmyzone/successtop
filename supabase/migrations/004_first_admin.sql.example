@@ -1,0 +1,13 @@
+-- Run this ONCE, after you have created your own user in Supabase:
+--   Dashboard > Authentication > Users > Add user (tick "Auto Confirm User").
+-- Replace the email with the one you just created, then run it in the SQL Editor.
+-- Do not commit a real email or password to GitHub.
+
+insert into public.bst_profiles (id, role, is_active)
+select id, 'admin', true from auth.users where email = 'emmanueleze1213@example.com'
+on conflict (id) do update set role = 'admin', is_active = true;
+
+-- Check it worked (you should see one row with role = admin):
+select p.id, u.email, p.role, p.is_active
+  from public.bst_profiles p join auth.users u on u.id = p.id
+ where p.role = 'admin';

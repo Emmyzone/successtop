@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-white text-ink font-body antialiased; }
+  h1, h2, h3, h4 { @apply font-display tracking-tight; }
+  :focus-visible { outline: 3px solid #D9A441; outline-offset: 2px; }
+  img { @apply max-w-full; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
+}
+
+@layer components {
+  .container-page { @apply mx-auto w-full max-w-6xl px-4 sm:px-6; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-primary { @apply btn bg-crust text-white hover:bg-crust-dark; }
+  .btn-gold { @apply btn bg-wheat text-ink hover:bg-wheat-soft; }
+  .btn-outline { @apply btn border border-crust/40 bg-white text-crust hover:bg-crumb; }
+  .field { @apply w-full rounded-xl border border-line bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-muted/60 focus:border-crust focus:outline-none focus:ring-2 focus:ring-wheat/50; }
+  .label { @apply mb-1 block text-sm font-medium text-ink; }
+  /* The one signature shape: a bakery shop-window arch. */
+  .arch { border-radius: 9999px 9999px 0 0; overflow: hidden; }
+}
